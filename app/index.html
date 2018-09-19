@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>serverTest</title>
+  <title>Chat App</title>
+  <link rel="stylesheet" href="npm/bulma/css/bulma.css">
+  <link rel="stylesheet" href="npm/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
-  <p>wow</p>
+  <div id="app" class="container">
+    <h5 class="subtitle is-4">Simple VueJS, SocketIO and NodeJS chat</h5>
+    <h6 class="subtitle is-6">
+      @author: Cristian Botella Hurtado
+
+      <a href="https://github.com/cbh6">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        cbh6
+      </a>
+    </h6>
+    <br>
+
+    <!-- Chat Box goes here -->
+    <div class="columns">
+      <div class="column is-two-thirds">
+
+        <!-- inputs user name -->
+        <transition name="fade">
+          <input-name></input-name>
+        </transition>
+
+        <!-- message list -->
+        <transition name="slide-fade">
+          <div class="box" v-show="isLogged">
+            <div class="messages">
+              <ul>
+                <li v-for="message in messages">
+                  <p>12345</p>
+                </li>
+              </ul>
+            </div>
+            <!-- inputs new message -->
+            <p>message</p>
+          </div>
+        </transition>
+      </div>
+
+      <!-- user list -->
+      <div class="column">
+        <p>test</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="npm/vue/dist/vue.js"></script>
+  <script src="npm/socket.io-client/dist/socket.io.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
