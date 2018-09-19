@@ -1,5 +1,8 @@
 # socketIo chat apple TEST
 
+# structure
+## local Server(express) + vuejs framework(front)
+
 ## modules
 ### cssfranework: bulma
 ### date: dateformat
