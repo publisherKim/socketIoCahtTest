@@ -18,3 +18,5 @@
 ## 실제 서비스개발에 적용하라는게 아님
 
 # 생각해볼 문제 socketIo 통신과 학습을 해야하는 목적
+
+# websocket은 아직 시기상조 표준에 드래프트 상태 cf: https://d2.naver.com/helloworld/1336
