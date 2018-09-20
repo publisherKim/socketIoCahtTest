@@ -2,6 +2,20 @@
 
   var socket = io();
 
+  // Message Component
+  Vue.component('message', {
+    props: ['messageData'],
+    template: ` <div class="media-content">
+                      <div class="content">
+                          <p>
+                              <strong>{{messageData.user}}</strong> <small>{{messageData.date}}</small>
+                              <br>
+                              {{messageData.text}}
+                          </p>
+                      </div>
+                  </div>`
+  });
+
   // Input message Component
   Vue.component('input-message', {
     data: function () {

@@ -40,6 +40,13 @@
         <!-- message list -->
         <transition name="slide-fade">
           <div class="box" v-show="isLogged">
+            <div class="messages">
+              <ul>
+                <li v-for="message in messages">
+                  <message v-bind:message-data="message"></message>
+                </li>
+              </ul>
+            </div>
             <!-- inputs new message -->
             <input-message v-on:send-message="sendMessage"></input-message>
           </div>
