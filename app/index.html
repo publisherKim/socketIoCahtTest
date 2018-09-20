@@ -36,7 +36,14 @@
         <transition name="fade">
           <input-name v-bind:is-logged="isLogged" v-on:set-name="setName"></input-name>
         </transition>
-        
+
+        <!-- message list -->
+        <transition name="slide-fade">
+          <div class="box" v-show="isLogged">
+            <!-- inputs new message -->
+            <input-message v-on:send-message="sendMessage"></input-message>
+          </div>
+        </transition>
       </div>
   
       <!-- user list -->

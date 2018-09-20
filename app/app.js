@@ -1,6 +1,33 @@
 (function () {
 
   var socket = io();
+
+  // Input message Component
+  Vue.component('input-message', {
+    data: function () {
+      return {
+        message: ''
+      }
+    },
+    template: ` <div class="controls" class="field has-addons">
+                        <div class="control is-expanded">
+                            <input v-model="message" v-on:keydown.enter="send" class="input is-primary" placeholder="Write message">
+                        </div>
+                        <div class="control">
+                            <button v-on:click="send" :disabled="!message" class="button is-primary">Send</button>
+                        </div>
+                    </div>`,
+    methods: {
+      send: function () {
+        if (this.message.length > 0) {
+          console.log('this.message:', this.message);
+          this.$emit('send-message', this.message);
+          this.message = '';
+        }
+      }
+    }
+  });
+
   // Input user name Component
   Vue.component('input-name', {
     props: ['isLogged'],
@@ -59,10 +86,8 @@
     methods: {
       sendMessage: function (message) {
         if (message) {
-          socket.emit('send-msg', {
-            message: message,
-            user: this.userName
-          });
+          console.log('소켓아 메세지좀 받아줘: ', message);
+          socket.emit('send-msg', { message: message, user: this.userName });
         }
       },
       setName: function (userName) {
@@ -74,6 +99,32 @@
   });
 
   // Client Socket events
+
+  // Input message Component
+  Vue.component('input-message', {
+    data: function () {
+      return {
+        message: ''
+      }
+    },
+    template: ` <div class="controls" class="field has-addons">
+                        <div class="control is-expanded">
+                            <input v-model="message" v-on:keydown.enter="send" class="input is-primary" placeholder="Write message">
+                        </div>
+                        <div class="control">
+                            <button v-on:click="send" :disabled="!message" class="button is-primary">Send</button>
+                        </div>
+                    </div>`,
+    methods: {
+      send: function () {
+        if (this.message.length > 0) {
+          console.log('message: ', this.message);
+          this.$emit('send-message', this.message);
+          this.message = '';
+        }
+      }
+    }
+  });
 
   // When the server emits a message, the client updates message list
   socket.on('read-msg', function (message) {
