@@ -34,7 +34,6 @@
     methods: {
       send: function () {
         if (this.message.length > 0) {
-          console.log('this.message:', this.message);
           this.$emit('send-message', this.message);
           this.message = '';
         }
@@ -100,7 +99,6 @@
     methods: {
       sendMessage: function (message) {
         if (message) {
-          console.log('소켓아 메세지좀 받아줘: ', message);
           socket.emit('send-msg', { message: message, user: this.userName });
         }
       },
@@ -108,7 +106,14 @@
         this.userName = userName;
         this.isLogged = true;
         socket.emit('add-user', this.userName);
+      },
+      scrollToEnd: function () {
+        var container = this.$el.querySelector("#messages");
+        container.scrollTop = container.scrollHeight;
       }
+    },
+    updated() {
+      this.scrollToEnd();
     }
   });
 

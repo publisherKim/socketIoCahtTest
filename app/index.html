@@ -40,7 +40,7 @@
         <!-- message list -->
         <transition name="slide-fade">
           <div class="box" v-show="isLogged">
-            <div class="messages">
+            <div id="messages" class="messages">
               <ul>
                 <li v-for="message in messages">
                   <message v-bind:message-data="message"></message>
